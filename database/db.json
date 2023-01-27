@@ -1,0 +1,66 @@
+{
+  "posts": [
+    {
+      "title": "title 1",
+      "detail": "detail 1",
+      "tags": [
+        "html",
+        "css",
+        "js",
+        "vuejs",
+        "reactjs",
+        "laravel"
+      ],
+      "id": 1
+    },
+    {
+      "title": "title 2",
+      "detail": "detail 2",
+      "tags": [
+        "vuejs",
+        "laravel",
+        "php"
+      ],
+      "id": 2
+    },
+    {
+      "title": "title 3",
+      "detail": "detail 3",
+      "tags": [
+        "laravel",
+        "reactjs"
+      ],
+      "id": 3
+    },
+    {
+      "title": "Title 4",
+      "detail": "Detail 4",
+      "tags": [
+        "flutter",
+        "java",
+        "reactjs"
+      ],
+      "id": 4
+    },
+    {
+      "title": "BBC News",
+      "detail": "Manchester united win 3-0 over Nottanforest",
+      "tags": [
+        "rashford",
+        "weghorst",
+        "bruno"
+      ],
+      "id": 5
+    },
+    {
+      "title": "Last title",
+      "detail": "last detail",
+      "tags": [
+        "kolin",
+        "c++",
+        "c+"
+      ],
+      "id": 6
+    }
+  ]
+}
