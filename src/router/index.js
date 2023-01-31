@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import PostDetail from '../views/PostDetail.vue'
 import CreatePost from '../views/CreatePost.vue'
 import FilterTags from '../views/FilterTags.vue'
+import RealTimeDatabase from '../views/RealTimeDatabase.vue'
 
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
     name : 'filterTags',
     component : FilterTags,
     props : true
+  },
+  {
+    path : '/realtime',
+    name : 'realTime',
+    component :RealTimeDatabase
   }
 
 

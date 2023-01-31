@@ -1,7 +1,7 @@
 <template>
 
 <div class="">
-    <div v-if="posts" class="posts">
+    <div v-if="posts.length>0" class="posts">
         <div class="layout">
             <div>
                 <div v-for="post in posts" :key="post.id">
@@ -33,14 +33,14 @@
         
         components : { SinglePost, Loader, TagCloud },
         setup(){
-            
+
             let {posts,error,load} = postLists();
 
-            load();
+            load()
 
-            // console.log(posts)
-            return {posts,error};
-
+            
+            return {posts,error}
+            
         }   
     }
 

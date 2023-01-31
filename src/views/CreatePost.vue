@@ -29,6 +29,9 @@
 
     import { ref } from 'vue';
     import {useRouter} from 'vue-router'
+    import { db } from '@/firebase/config';
+    import { collection, doc, setDoc, serverTimestamp } from '@firebase/firestore';
+
     export default {
         setup(){
 
@@ -49,20 +52,19 @@
             }
 
 
-            let createProject = ()=>{
+            let createProject = async()=>{
 
-                fetch('http://localhost:3000/posts',{
-                    method : "POST",
-                    headers : {
-                        "Content-type" : "application/json"
-                    },
-                    body : JSON.stringify({
-                        title : title.value,
-                        detail : detail.value,
-                        tags : tags.value
-                    })
-                })
-                
+                let data = {
+                    title : title.value,
+                    detail : detail.value,
+                    tags : tags.value,
+                    timestamp : serverTimestamp()
+                }
+
+                let getData = doc(collection(db,"blogs"));
+
+                await setDoc(getData,data);
+
                 router.push('/')
 
             }
@@ -91,9 +93,10 @@
         margin-bottom:5px;
     }
     input{
+        font-size:20px;
         width:95%;
         display:block;
-        padding:5px;
+        padding:10px;
     }
     button{
         width:100%;

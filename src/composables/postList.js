@@ -1,4 +1,7 @@
+import { doc, getDoc } from 'firebase/firestore';
 import {ref} from 'vue'
+import {db} from '../firebase/config'
+
 
 let postList = (id)=>{
 
@@ -9,17 +12,15 @@ let postList = (id)=>{
         
         try{
 
+            let data = doc(db,"blogs",id);
+
+            let response = await getDoc(data);
+
+
+            post.value = response.data();
+        
+
             
-            
-            let response = await fetch('http://localhost:3000/posts/'+id);
-
-            if(response.status === 404){
-                throw new Error('404 Not Found');
-            }
-
-            let data = await response.json();
-
-            post.value = data;
         }catch(err){
             error.value = err;
         }

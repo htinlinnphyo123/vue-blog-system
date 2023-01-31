@@ -11,9 +11,9 @@
                     </router-link>
                 </div>
             </div>
+            <button class="btn" @click="deletePost">Delete Post</button>
         </div>
         <div v-else>
-            Waiting to fetch data
             <Loader></Loader>
         </div>
     </div>
@@ -24,7 +24,10 @@
     
     import Loader from '../components/Loader.vue';
     import postList from '../composables/postList';
+    import { db } from '@/firebase/config';
     import { useRoute } from 'vue-router';
+    import { useRouter } from 'vue-router';
+    import { doc,deleteDoc } from '@firebase/firestore';
     export default {
         props : ['id'],
         components : {Loader},
@@ -32,12 +35,23 @@
 
             let route = useRoute();
             let {post,error,load} = postList(route.params.id);
+            let router = useRouter();
 
             load();
 
-            return {post,error};
-        
+            let deletePost =async ()=>{
 
+                let dataref = doc(db,'blogs',props.id);
+
+                await deleteDoc(dataref);
+
+                router.push('/')
+                
+
+            }
+
+
+            return {post,error,deletePost};
         }
     }
 
@@ -86,4 +100,14 @@
         border-radius:5px;
         box-shadow:0 5px 2px rgba(0,0,0,0.3);
     }
+    .btn{
+        width:100%;
+        background-color:orange;
+        color:#fff;
+        border:none;
+        padding:15px;
+        margin:10px auto;
+        cursor:pointer;
+    }
+
 </style>

@@ -26,6 +26,10 @@ export default {
         let filterTags = ref([]);
 
         props.posts.forEach((post)=>{
+            
+            post.tags.forEach((tag)=>{
+                alltags.value.push(tag);
+            })
             alltags.value.push(...post.tags);
         })
 

@@ -1,7 +1,7 @@
 <template>
 
     <div class="filter-container">
-        <div v-if="posts" class="posts">    
+        <div v-if="posts.length>0" class="posts">    
             <div class="layout">
                 <div>
                     <div v-if="filterPosts.length>0">
@@ -9,17 +9,14 @@
                             <SinglePost :post="post"></SinglePost>
                         </div>
                     </div>
-                    <div v-else-if="filterPosts.length===0">
-                        <h1 class="error">{{ noData }}</h1>
+                    <div v-else>
+                        <Loader></Loader>
                     </div>
                 </div>
                 <div>
                     <TagCloud :posts="posts"></TagCloud>
                 </div>
             </div>
-        </div>
-        <div v-else>
-            <Loader></Loader>
         </div>
     </div>
 
